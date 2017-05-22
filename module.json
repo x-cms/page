@@ -1,0 +1,10 @@
+{
+    "alias": "page",
+    "name": "Page",
+    "author": "xcms",
+    "description": "This is the description for the Page module.",
+    "namespace": "Xcms\\Page",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true
+}
