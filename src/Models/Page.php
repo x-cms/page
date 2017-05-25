@@ -11,4 +11,9 @@ class Page extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+
+    public function getTemplateAttribute($template)
+    {
+        return config('template.pages.' . $template);
+    }
 }

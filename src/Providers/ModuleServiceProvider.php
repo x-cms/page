@@ -43,6 +43,9 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //merge config
+        $this->mergeConfigFrom(__DIR__ . '/../../config/template.php', 'template');
+
         //Load helpers
         $this->loadHelpers();
 

@@ -1,6 +1,7 @@
 @extends('base::layouts.master')
 
 @push('styles')
+<link rel="stylesheet" href="{{ asset('vendor/core/plugins/select2/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/core/plugins/editor/css/editormd.css') }}">
 @endpush
 
@@ -51,7 +52,12 @@
                         <h3 class="box-title">页面模版</h3>
                     </div>
                     <div class="box-body">
-                        <input type="text" name="template" class="form-control"/>
+                        <select name="template" class="form-control select2">
+                            <option value="">请选择...</option>
+                            @foreach($templates as $key => $template)
+                                <option value="{{ $key }}">{{ $template }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="box box-primary">
@@ -77,10 +83,16 @@
 
 @push('scripts')
 <script src="{{ asset('vendor/core/plugins/editor/editormd.js') }}"></script>
+<script src="//cdn.bootcss.com/select2/4.0.3/js/select2.min.js"></script>
+<script src="//cdn.bootcss.com/select2/4.0.3/js/i18n/zh-CN.js"></script>
 @endpush
 
 @push('js')
 <script>
+    $('select').select2({
+        language: "zh-CN"
+    });
+
     let editor = editormd({
         id: "editormd",
         height: 640,

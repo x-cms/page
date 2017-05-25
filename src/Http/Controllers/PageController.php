@@ -5,6 +5,7 @@ namespace Xcms\Page\Http\Controllers;
 use Illuminate\Http\Request;
 use Xcms\Base\Http\Controllers\SystemController;
 use Xcms\Page\Models\Page;
+use Xcms\Themes\Facades\ThemeFacade;
 
 class PageController extends SystemController
 {
@@ -28,7 +29,7 @@ class PageController extends SystemController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|string
      */
     public function index(Request $request)
     {
@@ -50,7 +51,9 @@ class PageController extends SystemController
     {
         $this->setPageTitle('添加页面');
         $this->breadcrumbs->addLink('添加页面');
-        return view('page::create');
+        $templates = get_templates('pages');
+
+        return view('page::create', compact('templates'));
     }
 
     /**
@@ -95,7 +98,9 @@ class PageController extends SystemController
     {
         $this->setPageTitle('编辑页面');
         $page = Page::find($id);
-        return view('page::edit', compact('page'));
+        $templates = get_templates('pages');
+
+        return view('page::edit', compact('page', 'templates'));
     }
 
     /**
