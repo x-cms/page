@@ -3,6 +3,7 @@
 namespace Xcms\Page\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Nestable\NestableTrait;
 
 class Page extends Model
 {
@@ -12,8 +13,4 @@ class Page extends Model
 
     protected $guarded = [];
 
-    public function getTemplateAttribute($template)
-    {
-        return config('template.pages.' . $template);
-    }
 }

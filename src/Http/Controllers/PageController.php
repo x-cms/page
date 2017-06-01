@@ -53,7 +53,7 @@ class PageController extends SystemController
         $this->breadcrumbs->addLink('添加页面');
         $templates = get_templates('pages');
 
-        return view('page::create', compact('templates'));
+        return view('page::create', compact('templates', 'pages'));
     }
 
     /**
